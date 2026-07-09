@@ -1,0 +1,41 @@
+import random
+
+
+def guess_the_number_game():
+    # 1. Set up the game parameters
+    lower_bound = 1
+    upper_bound = 100
+    secret_number = random.randint(lower_bound, upper_bound)
+    attempts = 0
+
+    print("====================================")
+    print("         GUESS THE NUMBER           ")
+    print("====================================")
+    print(f"I am thinking of a number between {lower_bound} and {upper_bound}.")
+
+    # 2. Main game loop
+    while True:
+        try:
+            # Get player's guess
+            user_input = input("\nEnter your guess: ")
+            guess = int(user_input)
+            attempts += 1
+
+            # Check the guess against the secret number
+            if guess < secret_number:
+                print("Too low! Try a higher number.")
+            elif guess > secret_number:
+                print("Too high! Try a lower number.")
+            else:
+                # Player guessed correctly
+                print(f"\nCONGRATULATIONS! You found it in {attempts} attempts!")
+                break
+
+        except ValueError:
+            # Handle non-integer inputs gracefully
+            print("Invalid input! Please enter a valid whole number.")
+
+
+# Run the game
+if __name__ == "__main__":
+    guess_the_number_game()
